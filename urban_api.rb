@@ -2,8 +2,6 @@ require 'json'
 require 'rest-client'
 require 'sinatra'
 
-set port: 4444
-
 get '/define' do
   response = JSON.parse(RestClient.get('http://api.urbandictionary.com/v0/define?term=' + params['text']))
   { response_type: 'in_channel', text: "Top three definitions for: #{params['text']}", attachments: [text: get_definitions(response)] }.to_json
