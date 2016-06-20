@@ -4,6 +4,12 @@ require 'sinatra/base'
 
 
 class UrbanApi < Sinatra::Base
+  SLACK_TOKEN = 'MYFITCBvIUnM2DEOLGuCyhWU'
+
+  before do
+    halt 401 if params[:token] != SLACK_TOKEN
+  end
+
   get '/define' do
     content_type :json
     response = JSON.parse(RestClient.get('http://api.urbandictionary.com/v0/define?term=' + params['text']))
