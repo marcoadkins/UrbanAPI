@@ -4,10 +4,10 @@ require 'sinatra/base'
 
 
 class UrbanApi < Sinatra::Base
-  SLACK_TOKEN = 'MYFITCBvIUnM2DEOLGuCyhWU'
+  SLACK_TOKEN = %w[MYFITCBvIUnM2DEOLGuCyhWU DvYfyMK8W7lkphcygTR9p8sd]
 
   before do
-    halt 401 if params[:token] != SLACK_TOKEN
+    halt 401 unless SLACK_TOKENS.include?(params[:token])
   end
 
   get '/define' do
