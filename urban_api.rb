@@ -4,7 +4,7 @@ require 'sinatra/base'
 
 
 class UrbanApi < Sinatra::Base
-  SLACK_TOKEN = %w[MYFITCBvIUnM2DEOLGuCyhWU DvYfyMK8W7lkphcygTR9p8sd]
+  SLACK_TOKENS = %w[MYFITCBvIUnM2DEOLGuCyhWU DvYfyMK8W7lkphcygTR9p8sd]
 
   before do
     halt 401 unless SLACK_TOKENS.include?(params[:token])
